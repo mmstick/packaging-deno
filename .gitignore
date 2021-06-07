@@ -29,3 +29,17 @@ cli/tests/.test_coverage/
 # Flamegraphs
 /flamebench*.svg
 /flamegraph*.svg
+
+# Debian packaging
+.cargo
+vendor
+vendor.tar
+debian/*
+!debian/build.sh
+!debian/source
+!debian/changelog
+!debian/compat
+!debian/control
+!debian/copyright
+!debian/*.install
+!debian/rules

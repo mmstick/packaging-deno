@@ -1,0 +1,16 @@
+Source: deno
+Section: devel
+Priority: optional
+Maintainer: Michael Aaron Murphy <mmstick@pm.me>
+Build-Depends: debhelper (>= 10), cargo, rustc
+Standards-Version: 4.1.1
+Vcs-Git: https://github.com/denoland/deno.git
+Vcs-Browser: https://github.com/denoland/deno/tree/main
+Homepage: https://deno.land
+
+Package: deno
+Architecture: any
+Depends: ${misc:Depends}, ${shlib:Depends}
+Description: A secure JavaScript and TypeScript runtime
+ Deno is a simple, modern and secure runtime for JavaScript
+ and TypeScript that uses V8 and is built in Rust.

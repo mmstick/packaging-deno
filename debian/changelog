@@ -1,0 +1,5 @@
+deno (1.10.3) focal; urgency=medium
+
+  * Initial debian packaging release
+
+ -- Michael Aaron Murphy <mmstick@pm.me>  Sun, 06 Jun 2021 20:55:19 -0600

@@ -1,0 +1,38 @@
+#!/usr/bin/make -f
+
+export VENDOR ?= 1
+export CLEAN ?= 1
+
+prefix ?= /usr/local
+RELEASE = debug
+DEBUG ?= 0
+
+ifeq (0,$(DEBUG))
+	ARGS = --release
+	RELEASE = release
+endif
+
+ifeq (1,$(VENDOR))
+    ARGS += --frozen
+endif
+
+DESTDIR = debian/deno
+TARGET = target/$(RELEASE)
+BIN = deno
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	sh debian/build.sh extract
+	env CARGO_HOME="$$(pwd)/target/cargo" cargo build $(ARGS)
+
+override_dh_auto_clean:
+	sh debian/build.sh clean
+
+override_dh_auto_install:
+	install -Dm 0755 "$(TARGET)/$(BIN)" "$(DESTDIR)/usr/bin/$(BIN)"
+
+distclean: clean
+	rm -rf .cargo vendor vendor.tar
+
